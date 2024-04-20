@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useGetOnSaleQuery, useGetSoonQuery } from '../../services/api'
+
 import Banner from '../../components/Banner'
 import ProductsList from '../../components/ProductsList'
-
-import { useGetOnSaleQuery, useGetSoonQuery } from '../../services/api'
 
 export interface GalleryItem {
   type: 'image' | 'video'
@@ -41,13 +40,29 @@ const Home = () => {
     return (
       <>
         <Banner />
-        <ProductsList games={onSaleGames} title="Promoções" background="gray" />
-        <ProductsList games={soonGames} title="Em breve" background="black" />
+        <ProductsList
+          games={onSaleGames}
+          title="Promoções"
+          background="gray"
+          id="on-sale"
+        />
+        <ProductsList
+          games={soonGames}
+          title="Em breve"
+          background="black"
+          id="coming-soon"
+        />
       </>
     )
   }
 
-  return <h4>Carregando...</h4>
+  return (
+    <div className="loader">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  )
 }
 
 export default Home

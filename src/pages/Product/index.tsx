@@ -10,7 +10,13 @@ const Product = () => {
   const { data: game } = useGetGameQuery(id!)
 
   if (!game) {
-    return <h3>Carregando...</h3>
+    return (
+      <div className="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    )
   }
 
   return (
